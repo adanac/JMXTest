@@ -19,7 +19,7 @@ public class HelloAgent {
 		// 创建了一个MBeanServer，用来做MBean的容器
 		MBeanServer server = MBeanServerFactory.createMBeanServer();
 		// 将Hello这个类注入到MBeanServer中，注入需要创建一个ObjectName类
-		ObjectName helloName = new ObjectName("adanac:name=HelloWorld");
+		ObjectName helloName = new ObjectName("adanac:name=HelloWorldTest");
 		server.registerMBean(new Hello(), helloName);
 
 		// 此处 8082不是端口，而是参数

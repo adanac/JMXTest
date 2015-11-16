@@ -3,6 +3,7 @@ package com.adanac.test;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
+import javax.swing.JDialog;
 
 import com.sun.jdmk.comm.HtmlAdaptorServer;
 
@@ -18,7 +19,7 @@ public class HelloAgent {
 		// 创建了一个MBeanServer，用来做MBean的容器
 		MBeanServer server = MBeanServerFactory.createMBeanServer();
 		// 将Hello这个类注入到MBeanServer中，注入需要创建一个ObjectName类
-		ObjectName helloName = new ObjectName("chengang:name=HelloWorld");
+		ObjectName helloName = new ObjectName("adanac:name=HelloWorld");
 		server.registerMBean(new Hello(), helloName);
 
 		// 此处 8082不是端口，而是参数
@@ -36,5 +37,9 @@ public class HelloAgent {
 		// 运行HelloAgent，然后打开网页：http://localhost:8091/ ，
 		// 单击“name=HelloWorld”链接进入。
 
+		// 由于是为了演示保持程序处于运行状态，创建一个图形窗口
+		javax.swing.JDialog dialog = new JDialog();
+		dialog.setName("jmx test");
+		dialog.setVisible(true);
 	}
 }
